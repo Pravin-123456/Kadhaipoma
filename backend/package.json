@@ -3,10 +3,25 @@
   "module": "index.ts",
   "type": "module",
   "private": true,
+
+  "scripts": {
+    "dev": "bun --watch index.ts",
+    "start": "bun index.ts",
+    "build": "bun install"
+  },
+
   "devDependencies": {
     "@types/bun": "latest"
   },
   "peerDependencies": {
     "typescript": "^5"
+  },
+  "dependencies": {
+    "@clerk/clerk-sdk-node": "^5.1.6",
+    "@fastify/cors": "^11.2.0",
+    "dotenv": "^17.2.3",
+    "fastify": "^5.7.1",
+    "mongoose": "^9.1.4",
+    "socket.io": "^4.8.3"
   }
 }
