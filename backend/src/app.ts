@@ -1,12 +1,16 @@
 import Fastify from "fastify";
+import { clerkPlugin } from '@clerk/fastify'
 import authRoutes from "./routes/authRoutes";
 import userRoutes from "./routes/userRoutes";
 import chatRoutes from "./routes/chatRoutes";
 import messageRoutes from "./routes/messageRoutes";
+import { errorHandler } from "./middleware/errorHandler";
 
 const app = Fastify({ logger: true });
 
-app.get("/helth",  async () => {
+app.register(clerkPlugin);
+
+app.get("/api/helth",  async () => {
   return {
     status: "ok",
     message: "server is running",
@@ -32,5 +36,7 @@ app.register(chatRoutes,{
 app.register(messageRoutes,{
     prefix: "/api/messages"
 });
+
+app.setErrorHandler(errorHandler);
 
 export default app;
