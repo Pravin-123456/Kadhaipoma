@@ -1,6 +1,13 @@
 import app from "./src/app";
 import { connectDB } from "./src/config/database";
+import "dotenv/config";
+import dns from "node:dns";
 
+
+if (process.env.NODE_ENV !== "production") {
+  dns.setServers(["8.8.8.8", "8.8.4.4"]);
+}
+console.log("MONGO URI 👉", process.env.MONGODB_URI);
 
 const PORT = Number(process.env.PORT) || 3000
 
