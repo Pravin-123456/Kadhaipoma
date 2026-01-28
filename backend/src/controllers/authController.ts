@@ -3,9 +3,7 @@ import type { AuthRequest } from "../middleware/auth";
 import User from "../models/user";
 import { clerkClient, getAuth } from "@clerk/fastify";
 
-/* =======================
-   GET CURRENT USER
-======================= */
+// GET CURRENT USER 
 export const getMe = async (req: AuthRequest, reply: FastifyReply) => {
   const userId = req.userId;
 
@@ -22,9 +20,8 @@ export const getMe = async (req: AuthRequest, reply: FastifyReply) => {
   return reply.send(user);
 };
 
-/* =======================
-   AUTH CALLBACK (CLERK)
-======================= */
+// AUTH CALLBACK (CLERK)
+
 export const authCallback = async (
   req: FastifyRequest,
   reply: FastifyReply
