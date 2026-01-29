@@ -9,7 +9,11 @@ if (process.env.NODE_ENV !== "production") {
 }
 console.log("MONGO URI 👉", process.env.MONGODB_URI);
 
-const PORT = Number(process.env.PORT) || 3000
+const PORT = Number(process.env.PORT) || 3000;
+
+const httpServer = app.server;
+
+initializeSocket(httpServer)
 
 connectDB().then(async() => {
     try {
