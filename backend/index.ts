@@ -2,6 +2,7 @@ import app from "./src/app";
 import { connectDB } from "./src/config/database";
 import "dotenv/config";
 import dns from "node:dns";
+import { initializeSocket } from "./src/utils/socket";
 
 
 if (process.env.NODE_ENV !== "production") {
