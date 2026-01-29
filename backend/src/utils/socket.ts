@@ -17,8 +17,8 @@ export const initializeSocket = (httpServer: HttpServer) => {
       origin: [
         "http://localhost:8081",
         "http://localhost:5173",
-        process.env.FRONTEND_URL!,
-      ],
+        process.env.FRONTEND_URL,
+      ].filter(Boolean) as string[],
       credentials: true,
     },
   });
@@ -101,7 +101,7 @@ export const initializeSocket = (httpServer: HttpServer) => {
 
         // Emit to chat room only
         io.to(`chat:${chatId}`).emit("new-message", message);
-      }
+      },
     );
 
     socket.on("disconnect", () => {
